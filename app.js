@@ -13,6 +13,7 @@ var scores, roundScore, activePlayer;
 
 init();
 
+
 document.querySelector('.btn-roll').addEventListener('click', function() {
   
   // 1. Random number
@@ -36,12 +37,14 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   
   
 });
+
+
 document.querySelector ('.btn-hold').addEventListener('click', fuction() {
     // Add CURRENT score to GLOBAL score
     scores[activePlayer] += roundScore;
                                                  
     // Update the UI
-    document.querySelector('#score-'+ activePlayer).textContent = scores[activePlayer];                                                 
+   document.querySelector('#score-'+ activePlayer).textContent = scores[activePlayer];                                                 
                                                       
     // Check if player won the game   
     if (scores[activePlayer] >= 100) {
@@ -50,6 +53,8 @@ document.querySelector ('.btn-hold').addEventListener('click', fuction() {
        document.querySelector('player-' + activePlayer + '-panel').classList.add('winner');
        document.querySelector('player-' + activePlayer + '-panel').classList.remove('active');
     } else {
+        //Next player
+        next player();
     
 });      
       
@@ -59,11 +64,6 @@ function nextPlayer () {
     activePlayer === 0 ? activePLayer = 1 : activePLayer = 0;
     roundScore = 0; 
     
-    
-  
-  
-  
-  
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
   
@@ -89,8 +89,13 @@ function init() {
     document.getElementByID('score-1'). textContent = '0';
     document.getElementByID('current-0'). textContent = '0';
     document.getElementByID('current-1'). textContent = '0';
-    document.querySelector('#name-1').textContent = 'Player 1';
-    document.querySelector('#name-1').textContent = 'Player 2';                       
+    document.getElementByID('name-0'). textContent = 'Player 1';
+    document.getElementByID('name-1'). textContent = 'Player 2';
+    document.querySelector('.player-0-pannel').classlist.remove('winner');
+    document.querySelector('.player-1-pannel').classlist.remove('winner');
+    document.querySelector('.player-0-pannel').classlist.remove('active');
+    document.querySelector('.player-1-pannel').classlist.remove('active');
+    document.querySelector('.player-1-pannel').classlist.add('active');
 }
 
 
